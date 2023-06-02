@@ -1,0 +1,27 @@
+<premios_nobel>
+    <premios>
+        <premio categoria="fisica">
+            <año>1903</año>
+            <premiado>María Curie</premiado>
+            <motivo>descubrimiento radioactividad</motivo>
+        </premio>
+        <premio categoria="quimica">
+            <año>1911</año>
+            <premiado>María Curie</premiado>
+            <motivo>descubrimiento radioactividad</motivo>
+        </premio>
+        <premio categoria="literatura">
+            <año>1978</año>
+            <premiado>Isaac Bashevis Singer</premiado>
+        </premio>
+        <premio categoria="isica">
+            <año>2007</año>
+            <premiado>Gerhard Ertl</premiado>
+            <motivo>procesos químicos en superficies sólidas</motivo>
+        </premio>
+        <premio categoria="literatura">
+            <año>2010</año>
+            <premiado>Mario Vargas Llosa</premiado>
+        </premio>
+    </premios>
+</premios_nobel>
