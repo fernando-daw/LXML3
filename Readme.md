@@ -29,13 +29,83 @@ return $tabla
 
 let $ruta_vehiculos := "ruta/coche.xml" 
 let $nueva_categoria := "coches"
- let $nuevo_año := 2018 
- let $premiado := "Audi" 
- let $premio := "Mejor coche del año"
+let $nuevo_año := 2018 
+let $premiado := "Audi" 
+let $premio := "Mejor coche del año"
 
 let $premiado := <año>{$nuevo_año}</año> {$premiado} {$premio} 
 let $archivo_premio := <premios_coches> {$premiado} </premios_coches> 
 let $xml_string := serialize($archivo_premio, map { "method": "xml", "indent": true() })
 
 xbase:write-file($ruta_vehiculos, $xml_string)
+
+4-Realizar un fichero nuevo incluyendo motivos en los que no tienen
+
+let $ruta_vehiculos := "ruta/coche.xml"
+let $nueva_categoria := "coches"
+let $nuevo_año := 2007 
+let $premiado := "BMW" 
+let $premio := "Mejor coche del año"
+
+let $nuevo_premiado := if (not($nuevo_premio)) then <año>{$nuevo_año}</año> {$premiado} {$nuevo_premio}
+
+let $nuevo_archivo := <premios_nobel> {$premiado} </premios_nobel>
+
+let $xml_string := serialize($archivo_premio, map { "method": "xml", "indent": true() })
+
+xbase:write-file($ruta_vehiculos, $xml_string)
+
+SEGUNDA PARTE (Realiza una aplicación para usar el fichero employees.json)
+1-Que lea el fichero y guarde los datos en un array list
+
+Gson gson = new Gson();
+        String filePath = "employees.json";
+
+        try (FileReader fileReader = new FileReader(filePath)) {
+            // Lee el archivo JSON completo como un objeto
+            Employee employeesInfo = gson.fromJson(fileReader, Employee.class);
+
+            // Obtiene la lista de empleados del objeto EmployeesData
+            List<Employee> employees = employeesInfo.getEmployees();
+
+            // Recorre la lista de empleados y muestra sus datos
+            System.out.println("La lista de empleados es:");
+            for (Employee employee : employees) {
+                System.out.println("Empleado:");
+                System.out.println("Nombre: " + employee.getFirstName());
+                System.out.println("Apellido: " + employee.getLastName());
+                System.out.println();
+            }
+         catch (IOException e) {
+            e.printStackTrace();
+        }}
+    }
+}
+
+2-Despues de modificar algun datos en el array list que lo vuelva a guardar
+
+despues del ultimo "System.out.println();" y antes del catch ponemos:
+Gson gson = new Gson();
+        String filePath = "employees.json";
+
+        try (FileReader fileReader = new FileReader(filePath)) {
+            // Lee el archivo JSON completo como un objeto
+            Employee employeesInfo = gson.fromJson(fileReader, Employee.class);
+
+            // Obtiene la lista de empleados del objeto EmployeesData
+            List<Employee> employees = employeesInfo.getEmployees();
+
+            // Recorre la lista de empleados y muestra sus datos
+            System.out.println("La lista de empleados es:");
+            for (Employee employee : employees) {
+                System.out.println("Empleado:");
+                System.out.println("Nombre: " + employee.getFirstName());
+                System.out.println("Apellido: " + employee.getLastName());
+                System.out.println();
+            }
+
+             catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
